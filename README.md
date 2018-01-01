@@ -16,3 +16,7 @@ There are four sets of image-pairs from Professor Andy Davidhazy of Rochester In
 - What to do in portrait mode ?
 - Add menu to select admin page (adjust alignments).
 
+### Related
+This project is an upgrade of the javascript (ES6) version.
+http://www.ctyeung.com/wordpress/?p=996
+
