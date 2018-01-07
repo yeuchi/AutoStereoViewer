@@ -47,4 +47,8 @@ public class ImageAssets
     {
         return all;
     }
+    public static int count()
+    {
+        return lefts.size();
+    }
 }

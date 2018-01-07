@@ -1,7 +1,19 @@
+/*
+ * Module:      Main activity of stereo viewer
+ *
+ * Description: 1. load 1st image pair - Andy
+ *              2. start accelerometer to detect motion.
+ *              3. start speechHelper to detect voice command when motion.
+ *
+ * accelerometer article
+ * - Article: http://www.vogella.com/tutorials/AndroidSensor/article.html
+ */
 package com.ctyeung.autostereoviewer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
@@ -18,18 +30,27 @@ import android.view.Display;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
 import com.ctyeung.autostereoviewer.data.ImageAssets;
+import com.ctyeung.autostereoviewer.utility.DistortImage;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements SensorEventListener
 {
-    private ImageView imageViewLeft;
-    private ImageView imageViewRight;
     private TextView textView;
     private int index=0;
     protected SpeechRecognitionHelper speechHelper;
-
+    private SensorManager sensorManager;
+    private long lastUpdate;
+    private int imageLength=0;
+    private DistortImage distortImage;
+    private boolean LEFT=true;
+    private boolean RIGHT=true;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,11 +58,71 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // load images
-        int len = getShortLenght();
-        loadImages(len);
+        imageLength = getShortLenght();
+        loadImage(LEFT);
+        loadImage(RIGHT);
+
+        // motion sensor
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lastUpdate = System.currentTimeMillis();
 
         // speech recognition
         initSpeechHelper();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            getAccelerometer(event);
+        }
+    }
+
+    private void getAccelerometer(SensorEvent event) {
+        float[] values = event.values;
+        // Movement
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
+
+        float accelationSquareRoot = (x * x + y * y + z * z)
+                / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+        long actualTime = event.timestamp;
+        if (accelationSquareRoot >= 2) //
+        {
+            if (actualTime - lastUpdate < 200) {
+                return;
+            }
+            lastUpdate = actualTime;
+            Toast.makeText(this, "Device was shuffed", Toast.LENGTH_SHORT)
+                    .show();
+
+            // load next image-pair
+            index = (index<ImageAssets.count())? index+1:0;
+            loadImage(LEFT);
+            loadImage(RIGHT);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // register this class as a listener for the orientation and
+        // accelerometer sensors
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        // unregister listener
+        super.onPause();
+        sensorManager.unregisterListener(this);
     }
 
     private void initSpeechHelper()
@@ -67,17 +148,29 @@ public class MainActivity extends AppCompatActivity
         return (len<shorter)?len:shorter;
     }
 
-    private void loadImages(int len)
+    private void loadImage(boolean isLeft)
     {
-        imageViewLeft = (ImageView) findViewById(R.id.imageView_left);
-        imageViewLeft.setImageResource(ImageAssets.getLefts().get(index));
-        imageViewLeft.getLayoutParams().height = len;
-        imageViewLeft.getLayoutParams().width = len;
+        // get imageView element
+        int id = (isLeft)?
+                R.id.imageView_left:
+                R.id.imageView_right;
 
-        imageViewRight = (ImageView) findViewById(R.id.imageView_right);
-        imageViewRight.setImageResource(ImageAssets.getRights().get(index));
-        imageViewRight.getLayoutParams().height = len;
-        imageViewRight.getLayoutParams().width = len;
+        ImageView imageView = (ImageView) findViewById(id);
+
+        // load image
+        int resId = (isLeft)?
+                ImageAssets.getLefts().get(index):
+                ImageAssets.getRights().get(index);
+
+        // size image to screen size
+        imageView.setImageResource(resId);
+        imageView.getLayoutParams().height = imageLength;
+        imageView.getLayoutParams().width = imageLength;
+
+        // apply barrel distortion
+        Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap barrel = DistortImage.barrel(bitmap);
+        imageView.setImageBitmap(barrel);
     }
 
     @Override
