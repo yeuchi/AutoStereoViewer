@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private int imageLength=0;
     private DistortImage distortImage;
     private boolean LEFT=true;
-    private boolean RIGHT=true;
+    private boolean RIGHT=false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         lastUpdate = System.currentTimeMillis();
 
         // speech recognition
-        initSpeechHelper();
+        //initSpeechHelper();
     }
 
     @Override
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float accelationSquareRoot = (x * x + y * y + z * z)
                 / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
         long actualTime = event.timestamp;
-        if (accelationSquareRoot >= 2) //
+        if (accelationSquareRoot >= 1.3) //
         {
             if (actualTime - lastUpdate < 200) {
                 return;
@@ -168,9 +168,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         imageView.getLayoutParams().width = imageLength;
 
         // apply barrel distortion
-        Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        Bitmap barrel = DistortImage.barrel(bitmap);
-        imageView.setImageBitmap(barrel);
+       // Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+       // Bitmap barrel = DistortImage.barrel(bitmap);
+       // imageView.setImageBitmap(barrel);
     }
 
     @Override
@@ -202,9 +202,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             // in �matches� array we holding a results... let�s show the most relevant
             if (matches.size() > 0) {
-                if(null==textView)
-                    textView = (TextView)findViewById(R.id.tv_dictation);
-                else
+         //       if(null==textView)
+         //           textView = (TextView)findViewById(R.id.tv_dictation);
+         //       else
                     chars = textView.getText();
 
                 String str = matches.get(0).toString();
