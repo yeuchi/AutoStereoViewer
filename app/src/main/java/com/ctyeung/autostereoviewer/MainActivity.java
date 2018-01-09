@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         long actualTime = event.timestamp;
         if (accelationSquareRoot >= 1.3) //
         {
-            if (actualTime - lastUpdate < 2000) {
+            if (actualTime - lastUpdate > 1000) {
                 return;
             }
             lastUpdate = actualTime;
