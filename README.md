@@ -20,3 +20,8 @@ There are four sets of image-pairs from Professor Andy Davidhazy of Rochester In
 This project is an upgrade of the javascript (ES6) version.
 http://www.ctyeung.com/wordpress/?p=996
 
+### Images
+![screenshot_2018-01-08-19-22-54](https://user-images.githubusercontent.com/1282659/34700715-17de5c3e-f4aa-11e7-9f32-41b8642ca0ad.png)
+![screenshot_2018-01-08-19-23-02](https://user-images.githubusercontent.com/1282659/34700716-17f0e8ea-f4aa-11e7-88d3-f682c95c2724.png)
+![screenshot_2018-01-08-19-23-16](https://user-images.githubusercontent.com/1282659/34700717-1805780a-f4aa-11e7-9cfb-64f2c619645a.png)
+![screenshot_2018-01-08-19-23-48](https://user-images.githubusercontent.com/1282659/34700718-18148ca0-f4aa-11e7-95d1-4fed2211a736.png)
