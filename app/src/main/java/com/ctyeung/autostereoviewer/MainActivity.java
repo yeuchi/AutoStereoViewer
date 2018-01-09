@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float accelationSquareRoot = (x * x + y * y + z * z)
                 / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
         long actualTime = event.timestamp;
-        if (accelationSquareRoot >= 1.2) //
+        if (accelationSquareRoot >= 1.3) //
         {
             if (actualTime - lastUpdate < 2000) {
                 return;
             }
             lastUpdate = actualTime;
-            Toast.makeText(this, "Device was shuffed", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "image has shuffled", Toast.LENGTH_SHORT)
                     .show();
 
             // load next image-pair
@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         fragmentManager.beginTransaction()
                 .add(frameId, headFragment)
                 .commit();
-
     }
 
     @Override
