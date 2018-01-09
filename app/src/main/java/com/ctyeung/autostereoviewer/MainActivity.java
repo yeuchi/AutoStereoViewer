@@ -45,7 +45,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements SensorEventListener
 {
     private TextView textView;
-    private int index=0;
+    private int index=-1;
     protected SpeechRecognitionHelper speechHelper;
     private SensorManager sensorManager;
     private long lastUpdate;
@@ -62,8 +62,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         // load images
         imageLength = getShortLenght();
-        loadImage(LEFT);
-        loadImage(RIGHT);
+        goLoad();
 
         // motion sensor
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -96,15 +95,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 return;
             }
             lastUpdate = actualTime;
-            Toast.makeText(this, "image has shuffled", Toast.LENGTH_SHORT)
-                    .show();
-
-            // load next image-pair
-            index = (index<3)? index+1:0;
-            imageLength = getShortLenght();
-            loadImage(LEFT);
-            loadImage(RIGHT);
+            goLoad();
         }
+    }
+
+    private void goLoad()
+    {
+        // load next image-pair
+        index = (index<3)? index+1:0;
+        loadImage(LEFT);
+        loadImage(RIGHT);
+
+        String name = ImageAssets.getNames().get(index);
+        Toast.makeText(this, name, Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override

@@ -27,6 +27,14 @@ public class ImageAssets
         add(R.drawable.strobel_right_500);
     }};
 
+    private static final List<String> names = new ArrayList<String>()
+    {{
+        add("Professor Andrew Davidhazy");
+        add("Balloon - flash");
+        add("Papa Flash - Dr. Edgerton");
+        add("The Sheek - Dr. Stroble");
+    }};
+
     private static final List<Integer> all = new ArrayList<Integer>()
     {{
         addAll(lefts);
@@ -47,6 +55,9 @@ public class ImageAssets
     {
         return all;
     }
+
+    public static List<String> getNames() {return names;}
+
     public static int count()
     {
         return lefts.size();
