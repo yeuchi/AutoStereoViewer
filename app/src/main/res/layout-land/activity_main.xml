@@ -18,15 +18,15 @@
         android:layout_weight="1"
         android:id="@+id/main_layout">
 
-        <ImageView
-            android:layout_width="500dp"
-            android:layout_height="500dp"
-            android:id="@+id/imageView_left"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_container"></FrameLayout>
 
-        <ImageView
-            android:layout_width="500dp"
-            android:layout_height="500dp"
-            android:id="@+id/imageView_right"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_container"></FrameLayout>
 
     </LinearLayout>
 </LinearLayout>

@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -36,6 +37,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 import com.ctyeung.autostereoviewer.data.ImageAssets;
+import com.ctyeung.autostereoviewer.data.ImageFragment;
 import com.ctyeung.autostereoviewer.utility.DistortImage;
 
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private DistortImage distortImage;
     private boolean LEFT=true;
     private boolean RIGHT=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -87,9 +90,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float accelationSquareRoot = (x * x + y * y + z * z)
                 / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
         long actualTime = event.timestamp;
-        if (accelationSquareRoot >= 1.3) //
+        if (accelationSquareRoot >= 1.2) //
         {
-            if (actualTime - lastUpdate < 200) {
+            if (actualTime - lastUpdate < 2000) {
                 return;
             }
             lastUpdate = actualTime;
@@ -97,7 +100,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     .show();
 
             // load next image-pair
-            index = (index<ImageAssets.count())? index+1:0;
+            index = (index<3)? index+1:0;
+            imageLength = getShortLenght();
             loadImage(LEFT);
             loadImage(RIGHT);
         }
@@ -150,27 +154,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void loadImage(boolean isLeft)
     {
-        // get imageView element
-        int id = (isLeft)?
-                R.id.imageView_left:
-                R.id.imageView_right;
+        ImageFragment headFragment = new ImageFragment();
+        headFragment.setIndex(index);
+        headFragment.setDirection(isLeft);
+        headFragment.setLength(imageLength);
 
-        ImageView imageView = (ImageView) findViewById(id);
+        int frameId = (isLeft)?
+                        R.id.left_container:
+                        R.id.right_container;
 
-        // load image
-        int resId = (isLeft)?
-                ImageAssets.getLefts().get(index):
-                ImageAssets.getRights().get(index);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(frameId, headFragment)
+                .commit();
 
-        // size image to screen size
-        imageView.setImageResource(resId);
-        imageView.getLayoutParams().height = imageLength;
-        imageView.getLayoutParams().width = imageLength;
-
-        // apply barrel distortion
-       // Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
-       // Bitmap barrel = DistortImage.barrel(bitmap);
-       // imageView.setImageBitmap(barrel);
     }
 
     @Override
