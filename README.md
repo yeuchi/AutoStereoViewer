@@ -22,10 +22,10 @@ This project is an upgrade of the javascript (ES6) version.
 http://www.ctyeung.com/wordpress/?p=996
 
 ### Images
-Andy Davidhazy
+Professor Andrew Davidhazy
 ![screenshot_2018-01-08-19-22-54](https://user-images.githubusercontent.com/1282659/34700715-17de5c3e-f4aa-11e7-9f32-41b8642ca0ad.png)
 
-Balloon - high speed 
+Balloon - high speed - flash
 ![screenshot_2018-01-08-19-23-16](https://user-images.githubusercontent.com/1282659/34700717-1805780a-f4aa-11e7-9cfb-64f2c619645a.png)
 
 Dr. Edgerton
