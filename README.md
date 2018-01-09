@@ -28,10 +28,10 @@ Professor Andrew Davidhazy
 Balloon - high speed - flash
 ![screenshot_2018-01-08-19-23-16](https://user-images.githubusercontent.com/1282659/34700717-1805780a-f4aa-11e7-9cfb-64f2c619645a.png)
 
-Dr. Edgerton
+Papa flash - Dr. Edgerton
 ![screenshot_2018-01-08-19-23-48](https://user-images.githubusercontent.com/1282659/34700718-18148ca0-f4aa-11e7-95d1-4fed2211a736.png)
 
-Dr. Stroble
+The Sheek - Dr. Stroble
 ![screenshot_2018-01-08-19-23-02](https://user-images.githubusercontent.com/1282659/34700716-17f0e8ea-f4aa-11e7-88d3-f682c95c2724.png)
 
 
