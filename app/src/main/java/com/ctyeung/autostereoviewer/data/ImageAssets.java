@@ -13,24 +13,24 @@ public class ImageAssets
 
     private static final List<Integer> lefts = new ArrayList<Integer>()
     {{
-        add(R.drawable.andy_left_500);
         add(R.drawable.balloon_left_500);
+        add(R.drawable.andy_left_500);
         add(R.drawable.edgerton_left_500);
         add(R.drawable.strobel_left_500);
     }};
 
     private static final List<Integer> rights = new ArrayList<Integer>()
     {{
-        add(R.drawable.andy_right_500);
         add(R.drawable.balloon_right_500);
+        add(R.drawable.andy_right_500);
         add(R.drawable.edgerton_right_500);
         add(R.drawable.strobel_right_500);
     }};
 
     private static final List<String> names = new ArrayList<String>()
     {{
+        add("Pop !");
         add("Professor Andrew Davidhazy");
-        add("Balloon - flash");
         add("Papa Flash - Dr. Edgerton");
         add("The Sheek - Dr. Stroble");
     }};
