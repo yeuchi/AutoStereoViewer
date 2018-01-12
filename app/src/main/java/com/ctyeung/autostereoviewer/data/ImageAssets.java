@@ -32,7 +32,7 @@ public class ImageAssets
         add("Pop !");
         add("Professor Andrew Davidhazy");
         add("Papa Flash - Dr. Edgerton");
-        add("The Sheek - Dr. Stroble");
+        add("Dr. Stroble");
     }};
 
     private static final List<Integer> all = new ArrayList<Integer>()

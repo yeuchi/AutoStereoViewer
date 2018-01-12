@@ -92,9 +92,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (accelationSquareRoot >= 1.3) //
         {
             if ((actualTime - lastUpdate) > 2000)
+            {
                 goLoad();
-
-            lastUpdate = actualTime;
+                lastUpdate = actualTime;
+            }
         }
     }
 
@@ -104,10 +105,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         index = (index<3)? index+1:0;
         loadImage(LEFT);
         loadImage(RIGHT);
-
-        String name = ImageAssets.getNames().get(index);
-        Toast.makeText(this, name, Toast.LENGTH_SHORT)
-                .show();
     }
 
     @Override

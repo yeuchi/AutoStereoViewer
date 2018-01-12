@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.ctyeung.autostereoviewer.R;
 
 /**
@@ -15,6 +18,7 @@ import com.ctyeung.autostereoviewer.R;
 public class ImageFragment extends Fragment
 {
     private ImageView imageView;
+    private TextView textView;
     private View rootView;
     private int index = 0;
     private boolean isLeft = true;
@@ -58,6 +62,11 @@ public class ImageFragment extends Fragment
         // Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
         // Bitmap barrel = DistortImage.barrel(bitmap);
         // imageView.setImageBitmap(barrel);
+
+        // load image name
+        String name = ImageAssets.getNames().get(index);
+        textView = (TextView) rootView.findViewById(R.id.txtName);
+        textView.setText(name);
 
         return rootView;
     }
