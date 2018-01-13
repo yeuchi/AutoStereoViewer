@@ -1,8 +1,13 @@
+I am grateful to those whom have paved the way for us in high speed photography.
+This application display the giants of photograph and high speed imaging.
+
 # AutoStereoViewer
 Android auto-stereo image-pair viewer
 
 This is an Android application for viewing auto-stereo image-pairs.
 There are four sets of image-pairs from Professor Andy Davidhazy, Rochester Institute of Technology.
+
+
 
 ### Current features
 - loading 1st image-pair (Andy). 
