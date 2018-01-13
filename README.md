@@ -22,16 +22,20 @@ This project is an upgrade of the javascript (ES6) version.
 http://www.ctyeung.com/wordpress/?p=996
 
 ### Images
-Professor Andrew Davidhazy
-![screenshot_2018-01-08-19-22-54](https://user-images.githubusercontent.com/1282659/34700715-17de5c3e-f4aa-11e7-9f32-41b8642ca0ad.png)
-
 Balloon - high speed - flash
-![screenshot_2018-01-08-19-23-16](https://user-images.githubusercontent.com/1282659/34700717-1805780a-f4aa-11e7-9cfb-64f2c619645a.png)
+![balloon](https://user-images.githubusercontent.com/1282659/34901604-2262e29e-f7d2-11e7-9fa2-b7512adb8715.png)
+
+Professor Andrew Davidhazy
+![andy](https://user-images.githubusercontent.com/1282659/34901606-25f098d4-f7d2-11e7-9b55-f6b22800a93e.png)
 
 Papa flash - Dr. Edgerton
-![screenshot_2018-01-08-19-23-48](https://user-images.githubusercontent.com/1282659/34700718-18148ca0-f4aa-11e7-95d1-4fed2211a736.png)
+![edgerton](https://user-images.githubusercontent.com/1282659/34901611-2c0a17a4-f7d2-11e7-8800-7e250a8dc40c.png)
 
-The Sheek - Dr. Stroble
-![screenshot_2018-01-08-19-23-02](https://user-images.githubusercontent.com/1282659/34700716-17f0e8ea-f4aa-11e7-88d3-f682c95c2724.png)
+Dr. Stroble
+![stroble](https://user-images.githubusercontent.com/1282659/34901609-29deaf6c-f7d2-11e7-99d2-90b27d8e0622.png)
+
+
+
+
 
 
