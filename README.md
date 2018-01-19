@@ -7,7 +7,9 @@ Android auto-stereo image-pair viewer
 This is an Android application for viewing auto-stereo image-pairs.
 There are four sets of image-pairs from Professor Andy Davidhazy, Rochester Institute of Technology.
 
+### Google play intallation
 
+https://play.google.com/store/apps/details?id=com.ctyeung.autostereoviewer
 
 ### Current features
 - loading 1st image-pair (Andy). 
